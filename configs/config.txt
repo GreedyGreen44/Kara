@@ -1,0 +1,12 @@
+#Essential fields
+Host=www.vesselfinder.com
+BoxBot=33.521887
+BoxTop=40.672535
+BoxLeft=-92.697437
+BoxRight=-63.154660
+Zoom=6
+OutputType=csv
+OutputDirectory=/home/User/KaraOutput
+TimerValueSecs=5
+#Optional fields
+UserAgent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
