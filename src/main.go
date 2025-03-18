@@ -26,7 +26,26 @@ func initialCheck(clArgs []string) (map[string]string, int) {
 }
 
 func timerTick(configMap map[string]string) (resultCode int) {
-	return 0
+	data, resultCode := handleRequest(configMap)
+	if resultCode != 0 {
+		return resultCode
+	}
+	zoomInt, err := strconv.ParseInt(configMap["Zoom"], 10, 32)
+
+	if err != nil {
+		return handleError([2]byte{0x01, 0x03}, err)
+	}
+
+	vessels, resultCode := processData(data, int(zoomInt))
+	if resultCode != 0 {
+		return resultCode
+	}
+
+	if configMap["OutputType"] != "csv" {
+		return handleError([2]byte{0x00, 0x05}, errors.New("for now only saving to csv is available"))
+	}
+
+	return writeToCsv(vessels, configMap["OutputDirectory"])
 }
 
 func main() {
