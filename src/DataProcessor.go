@@ -27,7 +27,7 @@ func processData(data []byte, zoom int) (vessels []VesselInfo, resultCode int) {
 			break
 		}
 
-		if data[offset] == 0x00 {
+		if (data[offset] & 0x80) == 0x00 {
 			addHeaderLength = 10
 		}
 
