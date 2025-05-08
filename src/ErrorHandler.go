@@ -12,6 +12,8 @@ func handleError(errorCode [2]byte, err error) int {
 			warningLog.Printf("Data processing warning, %v. Kara continues to work\n", err)
 		case 0x04:
 			warningLog.Printf("Saving result warning, %v. Kara continues to work\n", err)
+		case 0x05:
+			warningLog.Printf("Http request handling warning, %v. Kara continues to work\n", err)
 		default:
 			warningLog.Printf("Unexpected minor error code %v, Kara continues to work\n", int(errorCode[1]))
 		}
