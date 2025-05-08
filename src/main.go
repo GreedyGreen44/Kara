@@ -36,6 +36,11 @@ func timerTick(configMap map[string]string) (resultCode int) {
 		return handleError([2]byte{0x01, 0x03}, err)
 	}
 
+	err = writeData(data, "KaraPlainOutput.txt")
+	if err != nil {
+		return handleError([2]byte{0x00, 0x03}, err)
+	}
+
 	vessels, resultCode := processData(data, int(zoomInt))
 	if resultCode != 0 {
 		return resultCode
